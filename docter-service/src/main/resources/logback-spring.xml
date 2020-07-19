@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+
+    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>13.71.17.114:5140</destination>
+        <!-- encoder is required -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+        <keepAliveDuration>5 minutes</keepAliveDuration>
+		<reconnectionDelay>1 seconds</reconnectionDelay>
+    </appender>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <property name="application.name" value="ms-eco-lc-transactions" scope="context"/>
+	
+	
+	
+    <root level="INFO">
+        <appender-ref ref="stash"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>
